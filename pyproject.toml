@@ -4,6 +4,9 @@ version = "0.1.0"
 requires-python = ">=3.13"
 dependencies = []
 
+[project.scripts]
+csv-metrics = "csv_metrics.presentation.cli:main"
+
 [dependency-groups]
 dev = [
     "basedpyright>=1.39.3",
