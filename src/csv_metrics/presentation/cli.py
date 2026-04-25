@@ -8,11 +8,7 @@ from csv_metrics.presentation.presenters import ReportPresenter
 def main() -> None:
     args = build_parser().parse_args()
 
-    try:
-        report_config = REPORT_REGISTRY[args.report]
-    except KeyError:
-        print(f"Unknown report: {args.report}")
-        return
+    report_config = REPORT_REGISTRY[args.report]
 
     use_case = build_use_case(args, report_config)
 
@@ -46,7 +42,7 @@ def build_parser() -> ArgumentParser:
     parser.add_argument(
         "--report",
         default="clickbait",
-        choices=REPORT_REGISTRY.keys(),
+        choices=list(REPORT_REGISTRY),
         help="Type of report",
     )
 
