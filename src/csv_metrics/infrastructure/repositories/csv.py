@@ -23,7 +23,7 @@ class CSVVideoMetricsRepository(VideoMetricsRepository):
             if reader.fieldnames is None:
                 raise ValueError(f"{path}: CSV has no header row")
 
-            missing = REQUIRED_FIELDS - set(reader.fieldnames)
+            missing = sorted(REQUIRED_FIELDS - set(reader.fieldnames))
 
             if missing:
                 raise ValueError(f"{path}: missing columns: {', '.join(missing)}")

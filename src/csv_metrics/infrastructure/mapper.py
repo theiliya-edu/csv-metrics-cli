@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from decimal import Decimal
+from decimal import Decimal, InvalidOperation
 
 from csv_metrics.domain.video_metrics import VideoMetrics
 
@@ -21,7 +21,7 @@ class VideoMetricsMapper:
             return Decimal("0")
         try:
             return Decimal(value)
-        except (ValueError, TypeError) as e:
+        except (ValueError, TypeError, InvalidOperation) as e:
             raise ValueError(f"Invalid decimal value: {value}") from e
 
     @staticmethod
